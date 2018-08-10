@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var btnLogOut = findViewById<Button>(R.id.logout)
-        btnLogOut.setOnClickListener { view ->
+
+        logout.setOnClickListener { view ->
             Toast.makeText(this, " Logout!", Toast.LENGTH_SHORT).show()
             signOut()
         }
@@ -22,7 +24,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    fun updatePhone(){
 
+    }
     fun signOut() {
         fbAuth.signOut()
 

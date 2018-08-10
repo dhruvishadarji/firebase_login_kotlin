@@ -15,7 +15,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        var login = findViewById<Button>(R.id.login)
         login?.setOnClickListener { view -> loginUsingFirebase() }
     }
 
@@ -24,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         var sPassword = password.text.toString().trim()
         auth.createUserWithEmailAndPassword(sEmail, sPassword).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
             if (task.isSuccessful) {
-                var intent = Intent(this, MainActivity::class.java)
+                var intent = Intent(this, MultiFabActivity::class.java)
                 intent.putExtra("id", auth.currentUser?.email)
                 startActivity(intent)
             } else {
